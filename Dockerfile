@@ -6,14 +6,14 @@ EXPOSE 5000
 # Use the official .NET SDK image for build
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
-COPY ["<CSI250Final_GameFilter>.csproj", "./"]
-RUN dotnet restore "./<CSI250Final_GameFilter>.csproj"
+COPY ["CSI250Final_GameFilter.csproj", "./"]
+RUN dotnet restore "./CSI250Final_GameFilter.csproj"
 COPY . .
 WORKDIR "/src"
-RUN dotnet publish "<CSI250Final_GameFilter>.csproj" -c Release -o /app/publish
+RUN dotnet publish "CSI250Final_GameFilter.csproj" -c Release -o /app/publish
 
 # Use the runtime image to run the app
 FROM base AS final
 WORKDIR /app
 COPY --from=build /app/publish .
-ENTRYPOINT ["dotnet", "<CSI250Final_GameFilter>.dll"]
+ENTRYPOINT ["dotnet", "CSI250Final_GameFilter.dll"]
