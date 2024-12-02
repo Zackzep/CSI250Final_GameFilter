@@ -1,10 +1,10 @@
-# Use the official ASP.NET Core runtime image
-FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS base
+# Use the official .NET 6.0 runtime image
+FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
 WORKDIR /app
 EXPOSE 5000
 
-# Use the official .NET SDK image for build
-FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
+# Use the official .NET 6.0 SDK image for build
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["CSI250Final_GameFilter.csproj", "./"]
 RUN dotnet restore "./CSI250Final_GameFilter.csproj"
@@ -12,7 +12,7 @@ COPY . .
 WORKDIR "/src"
 RUN dotnet publish "CSI250Final_GameFilter.csproj" -c Release -o /app/publish
 
-# Use the runtime image to run the app
+# Use the .NET 6.0 runtime image to run the app
 FROM base AS final
 WORKDIR /app
 COPY --from=build /app/publish .
