@@ -1,0 +1,29 @@
+﻿@model Publisher
+
+<div class="text-center">
+    <h1>Delete Board Game Publisher</h1>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <h3 style="color: darkred">Are you sure you want to delete this?</h3>
+        <hr />
+        <div class="row">
+            <div class="col-md-6">
+                <dl class="dl-horizontal">
+                    <dt>Name:</dt>
+                    @Html.DisplayFor(model => model.Name)
+                    <dt>City:</dt>
+                    @Html.DisplayFor(model => model.City)
+                    <dt>Country:</dt>
+                    @Html.DisplayFor(model => model.Country)
+                </dl>
+            </div>
+        </div>
+        <form asp-action="Delete" class="mt-4">
+            <input type="hidden" asp-for="Id" />
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+        </form>
+    </div>
+</div>

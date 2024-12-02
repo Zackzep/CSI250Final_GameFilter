@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33516.290
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSI250Final_GameFilter", "CSI250Final_GameFilter.csproj", "{164B7FA4-C840-4439-BFBE-407BB6B41EF1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{164B7FA4-C840-4439-BFBE-407BB6B41EF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{164B7FA4-C840-4439-BFBE-407BB6B41EF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{164B7FA4-C840-4439-BFBE-407BB6B41EF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{164B7FA4-C840-4439-BFBE-407BB6B41EF1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {22269207-1106-46EE-8CE2-50A9CB131855}
+	EndGlobalSection
+EndGlobal

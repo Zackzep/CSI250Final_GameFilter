@@ -1,0 +1,27 @@
+﻿@model Publisher
+
+
+<div class="text-center">
+    <h1>Board Game Publisher Details</h1>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <h3>Details for @Model.Name</h3>
+        <hr />
+        <div class="row">
+            <div class="col-md-6">
+                <dl class="dl-horizontal">
+                    <dt>Name:</dt>
+                    @Html.DisplayFor(model => model.Name)
+                    <dt>City:</dt>
+                    @Html.DisplayFor(model => model.City)
+                    <dt>Country:</dt>
+                    @Html.DisplayFor(model => model.Country)
+                </dl>
+            </div>
+        </div>
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a> |
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </div>
+</div>

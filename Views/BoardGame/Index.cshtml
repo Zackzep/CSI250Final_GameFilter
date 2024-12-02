@@ -1,0 +1,172 @@
+﻿@model IEnumerable<BoardGame>
+
+<div class="filter-section">
+    <h1 class="text-center">Board Game Index Filter</h1>
+    <div class="row mb-4">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <form asp-action="Index" method="get">
+                    <label class="form-label">Filter by Genre:</label>
+                    <div class="input-group">
+                        <select class="form-control" onchange="this.form.submit()" name="genre" asp-items="@ViewBag.genreFilter">
+                            <option selected="true" value="">No Filter</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <form asp-action="Index" method="get">
+                    <label class="form-label">Filter by Player Count:</label>
+                    <div class="input-group">
+                        <select class="form-control" onchange="this.form.submit()" name="playerCount" asp-items="@ViewBag.playerCountFilter">
+                            <option selected="true" value="">No Filter</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <form asp-action="Index" method="get">
+                    <label class="form-label">Filter by Price:</label>
+                    <div class="input-group">
+                        <select class="form-control" onchange="this.form.submit()" name="price" asp-items="@ViewBag.priceFilter">
+                            <option selected="true" value="">No Filter</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <form asp-action="Index" method="get">
+                    <label class="form-label">Filter by Publisher:</label>
+                    <div class="input-group">
+                        <select class="form-control" onchange="this.form.submit()" name="publisher" asp-items="@ViewBag.publisherFilter">
+                            <option selected="true" value="">No Filter</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-4">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <form asp-action="Index" method="get">
+                    <label class="form-label">Filter by Complexity (1-5):</label>
+                    <div class="input-group">
+                        <select class="form-control" name="difficulty" asp-items="@ViewBag.difficultyFilter">
+                            <option selected="true" value="">Select Complexity</option>
+                        </select>
+                        <div class="input-group-append">
+                            <button type="submit" name="diffFilterType" value="above" class="btn btn-outline-primary">Filter Above</button>
+                            <button type="submit" name="diffFilterType" value="below" class="btn btn-outline-primary">Filter Below</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <form asp-action="Index" method="get">
+                    <label class="form-label">Filter by Year:</label>
+                    <div class="input-group">
+                        <select class="form-control" name="year" asp-items="@ViewBag.yearFilter">
+                            <option selected="true" value="">Select Year</option>
+                        </select>
+                        <div class="input-group-append">
+                            <button type="submit" name="yearFilterType" value="before" class="btn btn-outline-primary">Filter Before</button>
+                            <button type="submit" name="yearFilterType" value="after" class="btn btn-outline-primary">Filter After</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-4">
+        <div class="col-sm-6">
+            <form asp-action="Index" method="get">
+                <div class="form-group">
+                    <label class="form-label">Search By Game Name:</label>
+                    <div class="input-group">
+                        <input class="form-control" type="text" name="gameName" />
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-primary">Search</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Create New Board Game</a>
+</p>
+
+<table class="table table-striped table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Genre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlayerCount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReleaseYear)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Complexity) (1-5)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Publisher)
+            </th>
+            <th>
+                <a>Actions</a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (BoardGame boardGame in Model)
+        {
+            <tr>
+                <td>
+                    @boardGame.Title
+                </td>
+                <td>
+                    @boardGame.Genre.Name
+                </td>
+                <td>
+                    @boardGame.PlayerCount
+                </td>
+                <td>
+                    @boardGame.ReleaseYear
+                </td>
+                <td>
+                    @boardGame.Complexity
+                </td>
+                <td>
+                    @boardGame.Cost
+                </td>
+                <td>
+                    @boardGame.Publisher.Name
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@boardGame.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@boardGame.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@boardGame.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
